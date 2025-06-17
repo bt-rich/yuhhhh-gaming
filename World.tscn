@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://cequti73bon53"]
+[gd_scene load_steps=10 format=3 uid="uid://cequti73bon53"]
 
 [ext_resource type="Script" path="res://Player.gd" id="1_lp5e8"]
+[ext_resource type="PackedScene" uid="uid://butnhw7gdkiho" path="res://rifle.tscn" id="2_x0xfs"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_c4p3a"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -60,6 +61,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0516663, 1.82242, 0.042798
 [node name="Camera3D" type="Camera3D" parent="Player/Head"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0260727, -0.642815)
 
+[node name="Rifle" parent="Player/Head/Camera3D" instance=ExtResource("2_x0xfs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.181331, -0.0761456, -0.422065)
+
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.4796, 1.01293, -0.0437045)
 material_override = SubResource("StandardMaterial3D_blx54")
@@ -94,3 +98,5 @@ size = Vector3(5.00923, 0.435547, 1.13505)
 transform = Transform3D(0.895278, 0, 0, 0, 6.66215, 0, 0, 0, 11.9925, -0.702021, 0.0561399, 9.88538)
 use_collision = true
 polygon = PackedVector2Array(-7.67201, -0.0118215, 1, 0, -7.40605, 0.626487)
+
+[node name="Node3D" type="Node3D" parent="."]
