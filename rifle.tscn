@@ -1,7 +1,52 @@
-[gd_scene load_steps=2 format=3 uid="uid://butnhw7gdkiho"]
+[gd_scene load_steps=5 format=3 uid="uid://butnhw7gdkiho"]
 
 [ext_resource type="PackedScene" uid="uid://l5gf43sjac1g" path="res://Steampunk Rifle.glb" id="1_lok1e"]
 
-[node name="Rifle" type="Node3D"]
+[sub_resource type="Animation" id="Animation_g0ca4"]
+resource_name = "Shoot"
+length = 0.1
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.01, 0.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0.05), Vector3(0, 0, 0)]
+}
 
-[node name="Model" parent="." instance=ExtResource("1_lok1e")]
+[sub_resource type="Animation" id="Animation_41swm"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yta1w"]
+_data = {
+"RESET": SubResource("Animation_41swm"),
+"Shoot": SubResource("Animation_g0ca4")
+}
+
+[node name="Steampunk Rifle" instance=ExtResource("1_lok1e")]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="1"]
+libraries = {
+"": SubResource("AnimationLibrary_yta1w")
+}
+
+[node name="RayCast3D" type="RayCast3D" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.459471)
+target_position = Vector3(0, 0, -1)

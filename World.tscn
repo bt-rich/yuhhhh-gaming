@@ -61,8 +61,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0516663, 1.82242, 0.042798
 [node name="Camera3D" type="Camera3D" parent="Player/Head"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0260727, -0.642815)
 
-[node name="Rifle" parent="Player/Head/Camera3D" instance=ExtResource("2_x0xfs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.181331, -0.0761456, -0.422065)
+[node name="Steampunk Rifle" parent="Player/Head/Camera3D" instance=ExtResource("2_x0xfs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.280134, -0.175149, -0.317501)
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.4796, 1.01293, -0.0437045)

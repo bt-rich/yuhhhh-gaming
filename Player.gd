@@ -6,18 +6,24 @@ const SPRINT_SPEED = 8.0
 const JUMP_VELOCITY = 4.5
 const SENSITIVITY = 0.003
 
-#bob variables
+# bob variables
 const BOB_FREQ = 2.8
 const BOB_AMP = 0.08
 var t_bob = 0.8
 
-#fov
+# fov
 const BASE_FOV = 75.0
 const FOV_CHANGE = 1.5
+
+# Bullets
+var bullet = load("res://Bullet.tscn")
+var instance
 
 # Declares camera variables
 @onready var head = $Head
 @onready var camera = $Head/Camera3D
+@onready var gun_anim = $"Head/Camera3D/Steampunk Rifle/AnimationPlayer"
+@onready var gun_barrel = $"Head/Camera3D/Steampunk Rifle/RayCast3D"
 
 # Removes mouse
 func _ready():
@@ -69,6 +75,15 @@ func _physics_process(delta: float) -> void:
 	var velocity_clamped = clamp(velocity.length(), 0.5, SPRINT_SPEED * 2)
 	var target_fov = BASE_FOV + FOV_CHANGE * velocity_clamped
 	camera.fov = lerp(camera.fov, target_fov, delta * 8.0)
+	
+	# Shooting
+	if Input.is_action_pressed("shoot"):
+		if !gun_anim.is_playing():
+			gun_anim.play("Shoot")
+			instance = bullet.instantiate()
+			instance.position = gun_barrel.global_position
+			instance.transform.basis = gun_barrel.global_transform.basis
+			get_parent().add_child(instance)
 
 	move_and_slide()
 
