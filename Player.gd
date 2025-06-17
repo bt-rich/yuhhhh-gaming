@@ -61,20 +61,20 @@ func _physics_process(delta: float) -> void:
 		velocity.x = lerp(velocity.x, direction.x * speed, delta * 2.0)
 		velocity.z = lerp(velocity.z, direction.z * speed, delta * 2.0)
 		
-	#head bob
+	# Head bob
 	t_bob += delta * velocity.length() * float(is_on_floor())
 	camera.transform.origin = _headbob(t_bob)
 	
-	#fov change
+	# FOV change
 	var velocity_clamped = clamp(velocity.length(), 0.5, SPRINT_SPEED * 2)
 	var target_fov = BASE_FOV + FOV_CHANGE * velocity_clamped
 	camera.fov = lerp(camera.fov, target_fov, delta * 8.0)
 
 	move_and_slide()
 
+# Headbob Func.
 func _headbob(time) -> Vector3:
 	var pos = Vector3.ZERO
 	pos.y = sin(time * BOB_FREQ) * BOB_AMP
 	pos.x = cos(time * BOB_FREQ / 2) * BOB_AMP
 	return pos
-	

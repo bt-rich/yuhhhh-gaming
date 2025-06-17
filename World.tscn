@@ -91,6 +91,6 @@ use_collision = true
 size = Vector3(5.00923, 0.435547, 1.13505)
 
 [node name="CSGPolygon3D" type="CSGPolygon3D" parent="."]
-transform = Transform3D(0.895278, 0, 0, 0, 6.66215, 0, 0, 0, 11.9925, -0.701032, 0.00418758, 9.88868)
+transform = Transform3D(0.895278, 0, 0, 0, 6.66215, 0, 0, 0, 11.9925, -0.702021, 0.0561399, 9.88538)
 use_collision = true
-polygon = PackedVector2Array(-5.03391, -0.0215097, 1, 0, -18.3518, 2.09028)
+polygon = PackedVector2Array(-7.67201, -0.0118215, 1, 0, -7.40605, 0.626487)
